@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clothes Store | Service</title>
+    <link rel="stylesheet" href="/service.css" />
+  </head>
+  <body>
+    <%- include("./partials/nav.ejs") %>
+    <section class="seasonalClothing">
+      <div class="seasonalClothing__container container">
+        <div class="seasonalClothing__summer seasonal-block">
+          <p id="summer" class="summer__name-clothing name-clothing filter">
+            T-shirt<br />And<br />Short
+          </p>
+        </div>
+        <div class="seasonalClothing__winter seasonal-block">
+          <p id="winter" class="winter__name-clothing name-clothing filter">
+            Sweater<br />And<br />Trousers
+          </p>
+        </div>
+        <div class="seasonalClothing__shoes seasonal-block">
+          <p id="shoes" class="shoes__name-clothing name-clothing filter">
+            Flip Flops<br />And<br />Sneakers
+          </p>
+        </div>
+        <div class="seasonalClothing__headdress seasonal-block">
+          <p
+            id="headdress"
+            class="headdress__name-clothing name-clothing filter"
+          >
+            Cap<br />And<br />Hat
+          </p>
+        </div>
+      </div>
+    </section>
+    <section class="product">
+      <div class="product__blockFilter container">
+        <div class="blockFilter__category">
+          <button class="category__item active-category">All</button>
+          <button class="category__item">T-shirt</button>
+          <button class="category__item">Short</button>
+          <button class="category__item">Sneakers</button>
+          <button class="category__item">Sweater</button>
+          <button class="category__item">Trousers</button>
+          <button class="category__item">Flip flops</button>
+        </div>
+        <div class="blockFilter__brand container-filter">
+          <h3 class="brand__title filter-title">Brand</h3>
+          <form class="brand__form filter-form">
+            <div>
+              <input
+                data-category="brand"
+                class="brand__checkbox filter-checkbox brand"
+                id="nike"
+                value="Nike"
+                type="checkbox"
+              />
+              <label class="brand__label filter-label" for="nike">Nike</label>
+            </div>
+            <div>
+              <input
+                data-category="brand"
+                class="brand__checkbox filter-checkbox brand"
+                id="adidas"
+                value="Adidas"
+                type="checkbox"
+              />
+              <label class="brand__label filter-label" for="adidas"
+                >Adidas</label
+              >
+            </div>
+            <div>
+              <input
+                data-category="brand"
+                class="brand__checkbox filter-checkbox brand"
+                id="puma"
+                value="Puma"
+                type="checkbox"
+              />
+              <label class="brand__label filter-label" for="puma">Puma</label>
+            </div>
+            <div>
+              <input
+                data-category="brand"
+                class="brand__checkbox filter-checkbox brand"
+                id="zara"
+                value="Zara"
+                type="checkbox"
+              />
+              <label class="brand__label filter-label" for="zara">Zara</label>
+            </div>
+            <div>
+              <input
+                data-category="brand"
+                class="brand__checkbox filter-checkbox brand"
+                id="levil's"
+                value="Levil's"
+                type="checkbox"
+              />
+              <label class="brand__label filter-label" for="levil's"
+                >Levil's</label
+              >
+            </div>
+            <div>
+              <input
+                data-category="brand"
+                class="brand__checkbox filter-checkbox brand"
+                id="gucci"
+                value="Gucci"
+                type="checkbox"
+              />
+              <label class="brand__label filter-label" for="gucci">Gucci</label>
+            </div>
+            <div>
+              <input
+                data-category="brand"
+                class="brand__checkbox filter-checkbox brand"
+                id="chicco"
+                value="Chicco"
+                type="checkbox"
+              />
+              <label class="brand__label filter-label" for="chicco"
+                >Chicco</label
+              >
+            </div>
+            <div>
+              <input
+                data-category="brand"
+                class="brand__checkbox filter-checkbox brand"
+                id="chanel"
+                value="Chanel"
+                type="checkbox"
+              />
+              <label class="brand__label filter-label" for="chanel"
+                >Chanel</label
+              >
+            </div>
+            <div>
+              <input
+                data-category="brand"
+                class="brand__checkbox filter-checkbox brand"
+                id="new balance"
+                value="New Balance"
+                type="checkbox"
+              />
+              <label class="brand__label filter-label" for="new balance"
+                >New Balance</label
+              >
+            </div>
+          </form>
+        </div>
+        <div class="blockFilter__for container-filter">
+          <h3 class="for__title filter-title">For</h3>
+          <form class="for__form filter-form">
+            <div>
+              <input
+                data-category="for"
+                class="for__checkbox filter-checkbox for"
+                id="man"
+                value="man"
+                type="checkbox"
+              />
+              <label class="for__label filter-label" for="man">Man</label>
+            </div>
+            <div>
+              <input
+                data-category="for"
+                class="for__checkbox filter-checkbox for"
+                id="woman"
+                value="woman"
+                type="checkbox"
+              />
+              <label class="for__label filter-label" for="woman">Woman</label>
+            </div>
+            <div>
+              <input
+                data-category="for"
+                class="for__checkbox filter-checkbox for"
+                id="children"
+                value="child"
+                type="checkbox"
+              />
+              <label class="for__label filter-label" for="children"
+                >Children</label
+              >
+            </div>
+          </form>
+        </div>
+        <div class="blockFilter__size container-filter">
+          <h3 class="size__title filter-title">Size</h3>
+          <form class="size__form filter-form">
+            <div>
+              <input
+                data-category="size"
+                class="for__checkbox filter-checkbox size"
+                id="s"
+                value="S"
+                type="checkbox"
+              />
+              <label class="size__label filter-label" for="s">S</label>
+            </div>
+            <div>
+              <input
+                data-category="size"
+                class="for__checkbox filter-checkbox size"
+                id="l"
+                value="L"
+                type="checkbox"
+              />
+              <label class="size__label filter-label" for="l">L</label>
+            </div>
+            <div>
+              <input
+                data-category="size"
+                class="for__checkbox filter-checkbox size"
+                id="m"
+                value="M"
+                type="checkbox"
+              />
+              <label class="size__label filter-label" for="m">M</label>
+            </div>
+            <div>
+              <input
+                data-category="size"
+                class="for__checkbox filter-checkbox size"
+                id="xs"
+                value="XS"
+                type="checkbox"
+              />
+              <label class="size__label filter-label" for="xs">XS</label>
+            </div>
+            <div>
+              <input
+                data-category="size"
+                class="for__checkbox filter-checkbox size"
+                id="xl"
+                value="XL"
+                type="checkbox"
+              />
+              <label class="size__label filter-label" for="xl">XL</label>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div id="products" class="product__container">
+        <% if(products.length){ %> <%products.forEach(product => { %>
+        <sa href="/service/<%= product._id %>">
+          <div class="product__card card">
+            <img class="card__img card" src="/<%= product.img %>" />
+            <div class="card__params">
+              <h3 class="params__title card">
+                <%= product.category %> <%= product.brand %>
+              </h3>
+              <div class="params__cost flex">
+                <p class="cost__price card">
+                  <%= product.price%><span class="price__span">$</span>
+                </p>
+                <button class="cost__btn">Buy</button>
+              </div>
+            </div>
+          </div>
+        </a>
+        <%})%> <%}%>
+      </div>
+    </section>
+    <%- include("./partials/footer.ejs") %>
+    <script src="/service.js"></script>
+  </body>
+</html>

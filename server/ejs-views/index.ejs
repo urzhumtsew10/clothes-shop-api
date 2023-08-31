@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clothes Store</title>
+    <link rel="stylesheet" href="/home.css" />
+  </head>
+  <body>
+    <%- include("./partials/nav.ejs") %>
+    <section class="main-section">
+      <div class="main-section__container container flex">
+        <div class="main-section__importantInfo">
+          <div class="importantInfo__discountBox flex">
+            <p class="discountBox__text">
+              <br />
+              ON<br /><span class="discountBox__text__span">EVERY</span
+              ><br />PURCHASE GET <br /><br />
+            </p>
+            <p class="discountBox__number">30%<br />OFF</p>
+          </div>
+          <div class="importantInfo__locationUs flex">
+            <img
+              class="locationUs__img"
+              src="/icon-location.svg"
+              alt="icon-location"
+            />
+            <p class="locationUs__adress">
+              B-531, Nalbanda Street, Hazuri Rd,<br />Ludhiana, Punjab 141008
+            </p>
+          </div>
+        </div>
+        <img class="main-section__img" src="/man-on-bike.png" alt="man" />
+        <img class="main-section__lable" src="/lable.png" alt="lable" />
+      </div>
+    </section>
+    <section class="priority">
+      <div class="prority__container flex">
+        <div class="priority__qualityProduct priority-case flex">
+          <div class="qualityProduct__boxImg boxImg flex">
+            <img
+              class="qualityProduct__img"
+              src="/icon-product.svg"
+              alt="product"
+            />
+          </div>
+          <h2 class="qualityProduct__title priority-title">Quality Product</h2>
+          <p class="qualityProduct__descr priority-descr">
+            Lorem ipsum dolor sit amet,<br />consectetur adipiscing elit.
+          </p>
+        </div>
+        <div class="priority__bestPrice priority-case flex">
+          <div class="bestPrice__boxImg boxImg flex">
+            <img class="bestPrice__img" src="/icon-price.svg" alt="price" />
+          </div>
+          <h2 class="bestPrice__title priority-title">Best Price</h2>
+          <p class="bestPrice__descr priority-descr">
+            Lorem ipsum dolor sit amet,<br />consectetur adipiscing elit.
+          </p>
+        </div>
+        <div class="priority__support priority-case flex">
+          <div class="support__boxImg boxImg flex">
+            <img class="support__img" src="/icon-support.svg" alt="call" />
+          </div>
+          <h2 class="support__title priority-title">24/7 Support</h2>
+          <p class="support__descr priority-descr">
+            Lorem ipsum dolor sit amet,<br />consectetur adipiscing elit.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section class="aboutUs flex">
+      <div class="aboutUs__container container flex">
+        <div class="aboutUs__info">
+          <p class="aboutUs__question">Who We Are</p>
+          <h2 class="aboutUs__title">
+            The best solution for<br />garment needs
+          </h2>
+          <p class="aboutUs__descr">
+            Lorem ipsum dolor sit amet, consectetur<br />adipiscing elit. Amet
+            gravida quis duis tellus<br />ultrices donec sollicitudin nisl.
+          </p>
+          <ul class="aboutUs__list">
+            <li class="aboutUs__list__item">
+              <img class="item__marker" src="/circle-red.svg" alt="marker" />
+              Lorem ipsum dolor sit amet, consectetur adipiscing
+            </li>
+            <li class="aboutUs__list__item">
+              <img class="item__marker" src="/circle-red.svg" alt="marker" />
+              Lorem ipsum dolor sit amet, consectetur adipiscing
+            </li>
+            <li class="aboutUs__list__item">
+              <img class="item__marker" src="/circle-red.svg" alt="marker" />
+              Lorem ipsum dolor sit amet, consectetur adipiscing
+            </li>
+            <li class="aboutUs__list__item">
+              <img class="item__marker" src="/circle-red.svg" alt="marker" />
+              Lorem ipsum dolor sit amet, consectetur adipiscing
+            </li>
+            <li class="aboutUs__list__item">
+              <img class="item__marker" src="/circle-red.svg" alt="marker" />
+              Lorem ipsum dolor sit amet, consectetur adipiscing
+            </li>
+          </ul>
+        </div>
+        <div class="aboutUs__photos flex">
+          <img
+            class="aboutUs__photos__img"
+            src="/photo-model-02.jpg"
+            alt="man"
+          />
+          <img
+            class="aboutUs__photos__img photo02"
+            src="/photo-model-01.jpg"
+            alt="man"
+          />
+          <div class="photos__experience flex">
+            <p class="experience__years">34</p>
+            <p class="experience__text">Years<br />Experience</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="service">
+      <div class="service__container container">
+        <p class="service__name name-section">Our Services</p>
+        <h2 class="service__title title-section">
+          Here Is What We Have For You
+        </h2>
+        <p class="service__text text-section">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet gravida
+          quis duis tellus ultrices donec<br />sollicitudin nisl. Lorem ipsum
+          dolor sit amet, consectetur adipiscing elit. Amet gravida quis duis
+          tellus<br />ultrices donec sollicitudin nisl.
+        </p>
+        <div class="service__clothesFor">
+          <div class="clothesFor__card clothes">
+            <div class="clothesFor__img clothes man"></div>
+            <h3 class="clothesFor__title clothes">Men's clothes</h3>
+          </div>
+          <div class="clothesFor__card clothes">
+            <div class="clothesFor__img clothes woman"></div>
+            <h3 class="clothesFor__title clothes">Women's clothes</h3>
+          </div>
+          <div class="clothesFor__card clothes">
+            <div class="clothesFor__img clothes child"></div>
+            <h3 class="clothesFor__title clothes">Kid's clothes</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+    <%- include("./partials/footer.ejs") %>
+    <script src="/index.js"></script>
+  </body>
+</html>

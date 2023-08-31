@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product details</title>
+    <link rel="stylesheet" href="/view-product.css" />
+    <link rel="stylesheet" href="/service.css" />
+  </head>
+  <body>
+    <%- include("./partials/nav.ejs") %>
+    <div class="aboutProduct">
+      <a href="/service"
+        ><img class="aboutProduct__arrow" src="/arrow.png" alt="arrow"
+      /></a>
+      <div class="aboutProduct__img">
+        <img class="imgProduct" src="/<%= product[0].img %>" />
+      </div>
+      <div class="aboutProduct__description">
+        <h2 class="description__categoryProduct">
+          <%= product[0].for %>'s <%= product[0].category %>
+        </h2>
+        <p class="description__brandProduct param">
+          brand:
+          <span class="description__span brand"><%= product[0].brand %></span>
+        </p>
+        <p class="description__colorProduct param">
+          color:
+          <span class="description__span color"><%= product[0].color %></span>
+        </p>
+        <p class="description__sizeProduct param">
+          size:
+          <span class="description__span size"><%= product[0].size %></span>
+        </p>
+        <p class="description__priceProduct param">
+          price:
+          <span class="description__span price"><%= product[0].price %></span
+          ><span class="priceProduct__span">$</span>
+        </p>
+        <div class="aboutProduct__actions flex">
+          <div class="actions__counterProduct flex">
+            <p class="counterProduct__remove action">-</p>
+            <p class="counterProduct__total">1</p>
+            <p class="counterProduct__add action">+</p>
+          </div>
+          <button class="actions__buy">Buy Now</button>
+          <button class="actions__quickOrder">Quick Order</button>
+        </div>
+      </div>
+    </div>
+    <%- include("./partials/footer.ejs") %>
+  </body>
+</html>
