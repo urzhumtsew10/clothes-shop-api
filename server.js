@@ -62,6 +62,20 @@ app.post("/sort", (req, res) => {
       return filterData.brand.includes(product.brand);
     });
 
+    filteredProducts = filteredProducts.filter((product) => {
+      if (filterData.for.length === 0) {
+        return true;
+      }
+      return filterData.for.includes(product.for);
+    });
+
+    filteredProducts = filteredProducts.filter((product) => {
+      if (filterData.size.length === 0) {
+        return true;
+      }
+      return filterData.size.includes(product.size);
+    });
+
     res.send(JSON.stringify(filteredProducts));
   });
 });
