@@ -48,10 +48,10 @@ app.post("/seasonal-clothes", (req, res) => {
   const seasonalClothes = req.body;
 
   getProducts().then((products) => {
-    const filteredProducts = products.filter((product) =>
+    const filteredClothes = products.filter((product) =>
       seasonalClothes.includes(product.category)
     );
-    res.send(JSON.stringify(filteredProducts));
+    res.send(JSON.stringify(filteredClothes));
   });
 });
 
