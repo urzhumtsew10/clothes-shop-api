@@ -44,51 +44,49 @@ app.post("/service", (req, res) => {
   getProducts().then((products) => res.send(JSON.stringify(products)));
 });
 
-app.post("/seasonal-clothes", (req, res) => {
-  const seasonalClothes = req.body;
-
-  getProducts().then((products) => {
-    const filteredClothes = products.filter((product) =>
-      seasonalClothes.includes(product.category)
-    );
-    res.send(JSON.stringify(filteredClothes));
-  });
-});
-
 app.post("/sort", (req, res) => {
   const filterData = req.body;
 
-  getProducts().then((products) => {
-    let filteredProducts = products.filter((product) => {
-      if (filterData.category === "All") {
-        return true;
-      }
-      return product.category === filterData.category;
-    });
+  if (filterData.length !== 2) {
+    getProducts().then((products) => {
+      let filteredProducts = products.filter((product) => {
+        if (filterData.category === "All") {
+          return true;
+        }
+        return product.category === filterData.category;
+      });
 
-    filteredProducts = filteredProducts.filter((product) => {
-      if (filterData.brand.length === 0) {
-        return true;
-      }
-      return filterData.brand.includes(product.brand);
-    });
+      filteredProducts = filteredProducts.filter((product) => {
+        if (filterData.brand.length === 0) {
+          return true;
+        }
+        return filterData.brand.includes(product.brand);
+      });
 
-    filteredProducts = filteredProducts.filter((product) => {
-      if (filterData.for.length === 0) {
-        return true;
-      }
-      return filterData.for.includes(product.for);
-    });
+      filteredProducts = filteredProducts.filter((product) => {
+        if (filterData.for.length === 0) {
+          return true;
+        }
+        return filterData.for.includes(product.for);
+      });
 
-    filteredProducts = filteredProducts.filter((product) => {
-      if (filterData.size.length === 0) {
-        return true;
-      }
-      return filterData.size.includes(product.size);
-    });
+      filteredProducts = filteredProducts.filter((product) => {
+        if (filterData.size.length === 0) {
+          return true;
+        }
+        return filterData.size.includes(product.size);
+      });
 
-    res.send(JSON.stringify(filteredProducts));
-  });
+      res.send(JSON.stringify(filteredProducts));
+    });
+  } else {
+    getProducts().then((products) => {
+      const filteredClothes = products.filter((product) =>
+        filterData.includes(product.category)
+      );
+      res.send(JSON.stringify(filteredClothes));
+    });
+  }
 });
 
 app.use((req, res) => {
