@@ -44,6 +44,17 @@ app.post("/service", (req, res) => {
   getProducts().then((products) => res.send(JSON.stringify(products)));
 });
 
+app.post("/seasonal-clothes", (req, res) => {
+  const seasonalClothes = req.body;
+
+  getProducts().then((products) => {
+    const filteredProducts = products.filter((product) =>
+      seasonalClothes.includes(product.category)
+    );
+    res.send(JSON.stringify(filteredProducts));
+  });
+});
+
 app.post("/sort", (req, res) => {
   const filterData = req.body;
 
@@ -79,27 +90,6 @@ app.post("/sort", (req, res) => {
     res.send(JSON.stringify(filteredProducts));
   });
 });
-
-// app.get("/service/:id", (req, res) => {
-//   const getProduct = async () => {
-//     try {
-//       await mongoClient.connect();
-//       const db = mongoClient.db("clothes-shop");
-//       const collection = db.collection("products");
-//       const results = await collection
-//         .find({ _id: new ObjectId(req.params.id) })
-//         .toArray();
-//       return results;
-//     } catch (err) {
-//       console.log(err);
-//     } finally {
-//       await mongoClient.close();
-//     }
-//   };
-//   getProduct().then((product) => {
-//     res.status(200).render(createPath("view-product"), { product });
-//   });
-// });
 
 app.use((req, res) => {
   res.status(404).render(createPath("error"));
