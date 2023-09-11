@@ -84,6 +84,7 @@ app.post("/sort", (req, res) => {
       const filteredClothes = products.filter((product) =>
         filterData.includes(product.category)
       );
+      console.log(filteredClothes);
       res.send(JSON.stringify(filteredClothes));
     });
   }
