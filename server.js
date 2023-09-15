@@ -122,7 +122,7 @@ app.post("/create-user", (req, res) => {
 
 app.post("/add-user", (req, res) => {
   const newUser = req.body;
-  const token = jwt.sign({ name: userData.name }, SECRET_KEY);
+  const token = jwt.sign({ name: newUser.name }, SECRET_KEY);
 
   addNewUser({ ...newUser, role: "user", token: token });
 });
