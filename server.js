@@ -53,12 +53,54 @@ const getUsers = async () => {
   }
 };
 
+const getOrders = async () => {
+  try {
+    await mongoClient.connect();
+    const db = mongoClient.db("clothes-shop");
+    const collection = db.collection("orders");
+    const results = await collection.find().toArray();
+    return results;
+  } catch (err) {
+    console.log(err);
+  } finally {
+    await mongoClient.close();
+  }
+};
+
 const addNewUser = async (user) => {
   try {
     await mongoClient.connect();
     const db = mongoClient.db("clothes-shop");
     const collection = db.collection("users");
     const results = await collection.insertOne(user);
+    return results;
+  } catch (err) {
+    console.log(err);
+  } finally {
+    await mongoClient.close();
+  }
+};
+
+const deleteOrder = async (orderId) => {
+  try {
+    await mongoClient.connect();
+    const db = mongoClient.db("clothes-shop");
+    const collection = db.collection("orders");
+    const results = await collection.deleteOne({ _id: new ObjectId(orderId) });
+    return results;
+  } catch (err) {
+    console.log(err);
+  } finally {
+    await mongoClient.close();
+  }
+};
+
+const addNewOrder = async (order) => {
+  try {
+    await mongoClient.connect();
+    const db = mongoClient.db("clothes-shop");
+    const collection = db.collection("orders");
+    const results = await collection.insertOne(order);
     return results;
   } catch (err) {
     console.log(err);
@@ -75,6 +117,32 @@ app.post("/service", (req, res) => {
   getProducts().then((products) => res.send(JSON.stringify(products)));
 });
 
+app.post("/user-orders", (req, res) => {
+  const userName = req.body.userName;
+
+  getOrders().then((orders) => {
+    const userOrders = orders.filter((order) => order.userName === userName);
+    res.send(JSON.stringify(userOrders));
+  });
+});
+
+app.post("/delete-order", (req, res) => {
+  const trashId = req.body.orderId;
+  deleteOrder(trashId);
+});
+
+app.post("/new-order", (req, res) => {
+  const orderData = req.body;
+  const order = {
+    userName: orderData.userName,
+    email: orderData.clientData.email,
+    products: orderData.clientOrder,
+    total: orderData.total,
+  };
+
+  addNewOrder(order);
+});
+
 app.post("/find-user", (req, res) => {
   const reqUser = req.body;
 
@@ -85,7 +153,9 @@ app.post("/find-user", (req, res) => {
     if (findUser.length === 0) {
       res.send(JSON.stringify({ isFound: false }));
     } else {
-      const token = jwt.sign({ name: reqUser.name }, SECRET_KEY);
+      const role = users.filter((user) => user.name === reqUser.name)[0].role;
+
+      const token = jwt.sign({ name: reqUser.name, role: role }, SECRET_KEY);
       res.send(
         JSON.stringify({ isFound: true, user: findUser[0], token: token })
       );
@@ -115,14 +185,20 @@ app.post("/create-user", (req, res) => {
     } else {
       response.email = true;
     }
-    const token = jwt.sign({ name: userData.name }, SECRET_KEY);
+    const token = jwt.sign(
+      { name: userData.name, role: userData.role },
+      SECRET_KEY
+    );
     res.send(JSON.stringify({ ...response, token: token }));
   });
 });
 
 app.post("/add-user", (req, res) => {
   const newUser = req.body;
-  const token = jwt.sign({ name: newUser.name }, SECRET_KEY);
+  const token = jwt.sign(
+    { name: newUser.name, role: newUser.role },
+    SECRET_KEY
+  );
 
   addNewUser({ ...newUser, role: "user", token: token });
 });
@@ -167,7 +243,6 @@ app.post("/sort", (req, res) => {
       const filteredClothes = products.filter((product) =>
         filterData.includes(product.category)
       );
-      console.log(filteredClothes);
       res.send(JSON.stringify(filteredClothes));
     });
   }
