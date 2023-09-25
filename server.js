@@ -109,6 +109,53 @@ const addNewOrder = async (order) => {
   }
 };
 
+const addNewProduct = async (data) => {
+  try {
+    await mongoClient.connect();
+    const db = mongoClient.db("clothes-shop");
+    const collection = db.collection("products");
+    const results = await collection.insertOne(data);
+    return results;
+  } catch (err) {
+    console.log(err);
+  } finally {
+    await mongoClient.close();
+  }
+};
+
+const setProduct = async (data) => {
+  try {
+    await mongoClient.connect();
+    const db = mongoClient.db("clothes-shop");
+    const collection = db.collection("products");
+    const results = await collection.replaceOne(
+      { _id: new ObjectId(data.id) },
+      { ...data }
+    );
+    return results;
+  } catch (err) {
+    console.log(err);
+  } finally {
+    await mongoClient.close();
+  }
+};
+
+const deleteProduct = async (productId) => {
+  try {
+    await mongoClient.connect();
+    const db = mongoClient.db("clothes-shop");
+    const collection = db.collection("products");
+    const results = await collection.deleteOne({
+      _id: new ObjectId(productId),
+    });
+    return results;
+  } catch (err) {
+    console.log(err);
+  } finally {
+    await mongoClient.close();
+  }
+};
+
 app.get("/", (req, res) => {
   res.json("Hello world");
 });
@@ -129,6 +176,21 @@ app.post("/user-orders", (req, res) => {
 app.post("/delete-order", (req, res) => {
   const trashId = req.body.orderId;
   deleteOrder(trashId);
+});
+
+app.post("/add-product", (req, res) => {
+  const productData = req.body;
+  addNewProduct(productData);
+});
+
+app.post("/redact-product", (req, res) => {
+  const data = req.body;
+  setProduct(data);
+});
+
+app.post("/delete-product", (req, res) => {
+  const trashId = req.body.productId;
+  deleteProduct(trashId);
 });
 
 app.post("/new-order", (req, res) => {
